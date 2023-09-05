@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.14.2
+    volumes:
+      -  ./logstash/:/config-dir
+    ports:
+      - 9600:9600
+      - 5959:5959
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+      ELASTICSEARCH_URL: https://127.0.0.1:9200
+      ELASTICSEARCH_HOSTS: https://127.0.0.1:9200
+      XPACK_MONITORING_ENABLED: "false"
+
+
+    command: logstash -f /config-dir/logstash.conf
