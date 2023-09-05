@@ -1,0 +1,4 @@
+flask==2.2.2
+fastjsonschema==2.16.2
+elasticsearch==7.13
+python-logstash==0.4.8
