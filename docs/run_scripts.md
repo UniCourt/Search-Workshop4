@@ -14,13 +14,6 @@ cd Search-Workshop2
 docker-compose up
 ```
 
-3. Bring APIs up from Search-Workshop3
-```
-cd Search-Workshop3
-docker build -t ws3 .
-docker run -p 5000:5000 "ws3:latest"
-```
-
 ###### Note: 
 1. Update the ip address in logstash/logstash.conf, replace '127.0.0.1' with your local system ip.
 2. Update the ip address in src/app/app.py, replace '127.0.0.1' with your local system ip.
@@ -29,16 +22,23 @@ docker run -p 5000:5000 "ws3:latest"
 ###### 
 ```
 ENV POSTGRES_HOST='127.0.0.1'
+ENV ES_HOST='127.0.0.1'
 In the above line replace '127.0.0.1' with your local system ip
+```
+
+Bring logstash up from Search-Workshop4
+```
+cd Search-Workshop4
+docker-compose up
 ```
 
 Build docker image
 ```
-docker build -t ws3 .
+docker build -t ws4 .
 ```
 Bring up flask app
 ```
-docker run -p 5000:5000 "ws3:latest"
+docker run -p 5000:5000 "ws4:latest"
 ```
 
 ## Make an API Request
@@ -63,4 +63,3 @@ r = requests.post(
 # print the response
 print(json.dumps(r.json(), indent=4))
 ```
-
