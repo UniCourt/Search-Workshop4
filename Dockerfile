@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/python:3.8
+FROM public.ecr.aws/docker/library/python:3.10
 
 RUN apt-get update && apt-get install -y postgresql-client
 
